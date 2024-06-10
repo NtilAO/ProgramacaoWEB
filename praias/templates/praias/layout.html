@@ -1,0 +1,35 @@
+<!-- layout.html -->
+<html>
+    <head>
+        <title>Praias</title>
+    </head>
+<body>
+
+    <h1>Praias</h1>
+        {% for regiao in regioes %}
+        <h2>{{regiao.nome}}</h2>
+            {% if regiao.praias.all %}
+            <ul>
+                {% for praia in regiao.praias.all %}
+                    <li>
+                        <a href="{% url 'praias:praia_url' praia.nome %}">{{ praia.nome }}.</a>
+                        Serviços:
+                        {% for servico in praia.servico_set.all %}
+                              {{servico.nome}}.
+                        {% endfor %}
+                    </li>
+                {% endfor %}
+            </ul>
+            {% else %}
+            <h3>  Esta região não tem praias.</h3>
+            {% endif %}
+        {% endfor %}
+
+
+    {% block content %}
+    {% endblock %}
+
+    <h3>2024</h3>
+
+</body>
+</html>

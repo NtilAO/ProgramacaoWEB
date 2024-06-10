@@ -1,0 +1,33 @@
+<!-- layout.html -->
+<html>
+    <head>
+        <title>Artigos</title>
+        <style>
+            body {
+                background: #C83F49;
+            }
+        </style>
+    </head>
+<body>
+    <header>
+    <h1>Artigos</h1>
+    <a href="{% url 'artigo:artigos_url' %}"><button>Artigos</button></a>
+    <a href="{% url 'artigo:autores_url' %}"><button>Autores</button></a>
+    </header>
+
+    <main>
+     {% block content %}
+     {% endblock %}
+     {% if user.is_authenticated %}
+        <p>Bem-vindo, {{ user.username }}!</p>
+        <form action="{% url 'logout' %}" method="post">
+            {% csrf_token %}
+            <button type="submit">Logout</button>
+        </form>
+    <!-- Se o usuário não estiver autenticado, exiba um botão de login -->
+    {% else %}
+        <a href="{% url 'login' %}"><button>Login</button></a>
+    {% endif %}
+     </main>
+</body>
+</html>

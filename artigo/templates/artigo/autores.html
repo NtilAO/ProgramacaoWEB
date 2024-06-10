@@ -1,0 +1,14 @@
+<!-- autores.html -->
+{% extends 'artigo/layout.html' %}
+
+{% block content %}
+<h1>Lista de Autores:
+    <ul>
+        {% for autor in autores %}
+            <li>
+                <a href="{% url 'artigo:autor_url' autor.nome %}">{{ autor.nome }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+</h1>
+{% endblock %}

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            background: darkturquoise;
+        }
+        {% block style %}
+        {% endblock %}
+    </style>
+    <title>Seletores CSS e Combinadores</title>
+    <a href="{% url 'bandas:layout_url' %}"><button>Lista</button></a>
+</head>
+<body>
+    <h3>Seletores CSS</h3>
+    <p>CSS é utilizado para estilizar páginas web. Ele permite adicionar cores, fontes e layouts às páginas HTML.</p>
+    <table>
+        <tr>
+            <th>Seletores</th>
+            <th>Utilizado?</th>
+            <th>Comentário</th>
+        </tr>
+        <tr>
+            <td>Seletor de tipo</td>
+            <td><img src="used.png" alt="Não Utilizado"></td>
+            <td>Seleciona elementos com base no seu tipo (tag). Ainda não utilizei este seletor para aplicar estilos aos parágrafos em um <a href="exemplo.html">exemplo de página</a>.</td>
+        </tr>
+        <tr>
+            <td>Seletor de classe</td>
+            <td><img src="not-used.png" alt="Não Utilizado"></td>
+            <td>Seleciona elementos com base na sua classe. Ainda não utilizei este seletor em nenhuma página.</td>
+        </tr>
+        <tr>
+            <td>Seletor de ID</td>
+            <td><img src="used.png" alt="Não Utilizadoo"></td>
+            <td>Seleciona um elemento com base no seu ID único. Ainda não utilizei este seletor para estilizar o cabeçalho de uma <a href="outra_pagina.html">outra página</a>.</td>
+        </tr>
+    </table>
+
+    <h3>Combinadores de Seletores</h3>
+    <table>
+        <tr>
+            <th>Combinador</th>
+            <th>Utilizado?</th>
+            <th>Comentário</th>
+        </tr>
+          <tr>
+            <td>Descendente</td>
+            <td><img src="used.png" alt="Não Utilizado"></td>
+            <td>Seleciona elementos que são descendentes diretos ou indiretos de outro elemento. Ainda não utilizei este combinador em um projeto para estilizar listas dentro de divs.</td>
+        </tr>
+        <tr>
+            <td>Filho direto</td>
+            <td><img src="not-used.png" alt="Não Utilizado"></td>
+            <td>Ainda não utilizei este combinador em nenhuma página.</td>
+        </tr>
+</table>
+</body>
+</html>

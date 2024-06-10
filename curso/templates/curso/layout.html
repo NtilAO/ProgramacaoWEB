@@ -1,0 +1,42 @@
+<!-- layout.html -->
+<html>
+    <head>
+        <title>Cursos</title>
+        <style>
+            body {
+                background: magenta;
+            }
+        </style>
+    </head>
+<body>
+    <header>
+    <h1>Áreas Científicas</h1>
+    <a href="{% url 'curso:area_url' %}"><button>Área</button></a>
+    <ul>
+        {% for areaCientifica in areaCientificas %}
+            <li>
+                {{ areaCientifica.nome }}
+            </li>
+        {% endfor %}
+    </ul>
+
+    <h1>Cursos</h1>
+    <a href="{% url 'curso:cursos_url' %}"><button>Cursos</button></a>
+    </header>
+
+    <main>
+     {% block content %}
+     {% endblock %}
+    </main>
+
+    {% if user.is_authenticated %}
+        <p>Bem-vindo, {{ user.username }}!</p>
+        <form action="{% url 'logout' %}" method="post">
+            {% csrf_token %}
+            <button type="submit">Logout</button>
+        </form>
+    {% else %}
+        <a href="{% url 'login' %}"><button>Login</button></a>
+    {% endif %}
+</body>
+</html>

@@ -1,0 +1,28 @@
+<html>
+    <head>
+        <title>Biblioteca</title>
+        <style>
+            body {
+                background: khaki;
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <h1>Biblioteca da Lusofonia</h1>
+            <a href="{% url 'autores' %}"><button>Autores</button></a>
+            <a href="{% url 'generos' %}"><button>Géneros</button></a>
+        </header>
+
+        <main>
+
+            {% block content %}
+            {% endblock %}
+
+        </main>
+
+        <footer>
+            <p>Universidade Lusófona</p>
+        </footer>
+    </body>
+</html>

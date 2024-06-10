@@ -1,0 +1,56 @@
+<!-- layout.html -->
+<html>
+    <head>
+        <title>Bandas</title>
+
+        <!-- Carregando static -->
+        {% load static %}
+
+        <!-- Link para o CSS -->
+        <link rel="stylesheet" href="{% static 'bandas/estilos.css' %}">
+
+        <!-- Link para a fonte Google -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+        <!-- Link para o Font Awesome -->
+        <script src="https://kit.fontawesome.com/5d1319edfb.js" crossorigin="anonymous"></script>
+        <style>
+            body {
+                background: darkturquoise;
+            }
+            {% block style %}
+            {% endblock %}
+        </style>
+    </head>
+<body>
+
+    <h1>Lista de Bandas</h1>
+    <h1>
+    <a href="{% url 'bandas:layout_url' %}"><button>Lista</button></a>
+    <a href="{% url 'bandas:css_url' %}"><button>CSS</button></a>
+    <ul>
+        {% for banda in bandas %}
+            <li>
+                <a href="{% url 'bandas:banda_url' banda.nome %}">{{ banda.nome }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+    </h1>
+
+    {% block content %}
+    {% endblock %}
+
+    {% if user.is_authenticated %}
+        <p>Bem-vindo, {{ user.username }}!</p>
+        <form action="{% url 'logout' %}" method="post">
+            {% csrf_token %}
+            <button type="submit">Logout</button>
+        </form>
+    {% else %}
+        <a href="https://a22202461.pythonanywhere.com/admin/login/?next=/admin/bandas/musica/"><button>Login</button></a>
+    {% endif %}
+
+</body>
+</html>

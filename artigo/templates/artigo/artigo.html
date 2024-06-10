@@ -1,0 +1,27 @@
+<!-- artigo.html -->
+{% extends 'artigo/layout.html' %}
+
+{% block content %}
+    <ul>
+    <h1> {{ artigo.titulo }} </h1>
+
+
+    <h2>Feito por:
+    <li><a href="{% url 'artigo:autor_url' artigo.autor.nome %}">{{ artigo.autor }}</a></li>
+    </h2>
+
+    <h3>Escrito em: {{ artigo.ano_De_Publicacao }}</h3>
+    <h3>Rating: {{ artigo.ratings_Total }}</h3>
+
+    <h2><pre>{{ artigo.conteudo }}</pre></h2>
+
+    <h3>Comentários:
+    {% for comentario in artigo.comentario_set.all %}
+       <li>
+          {{ comentario.autor.username }}: <a href="{% url 'artigo:comentario_url' comentario.id %}">"{{ comentario.texto }}"</a>
+       </li>
+    {% endfor %}
+    </h3>
+
+    </ul>
+{% endblock %}

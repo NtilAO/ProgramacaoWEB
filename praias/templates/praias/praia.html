@@ -1,0 +1,27 @@
+<!-- praia.html -->
+{% extends 'praias/layout.html' %}
+
+{% block content %}
+    <ul>
+        <h2> {{ praia.nome }},
+        {% for r in regiao %}
+            <a>{{ r.nome }}</a>
+        {% endfor %}
+        </h2>
+
+        <h3>Serviços:
+            <ul>
+                {% for servico in servicos %}
+                    <li>
+                        <a>{{ servico.nome }}</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </h3>
+
+        <img src='{{ praia.foto.url}}' width="150px">
+
+        <h3><a href="{% url 'praias:layout_url' %}">Lista de praias</a></h3>
+
+    </ul>
+{% endblock %}

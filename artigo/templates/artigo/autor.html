@@ -1,0 +1,24 @@
+<!-- autor.html -->
+{% extends 'artigo/layout.html' %}
+
+{% block content %}
+    <ul>
+        <h1> {{ autor.nome }} </h1>
+
+        <h2>Username: {{ autor.username }} </h2>
+
+        <h2>Lista de artigos do autor:
+        {% if autor.artigo_set.all %}
+            <ul>
+                {% for artigo in autor.artigo_set.all %}
+                    <li>
+                        <a href="{% url 'artigo:artigo_url' artigo.titulo %}">{{ artigo.titulo }}</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <h3>  O autor ainda não escreveu nenhum artigo.</h3>
+        {% endif %}
+        </h2>
+    </ul>
+{% endblock %}

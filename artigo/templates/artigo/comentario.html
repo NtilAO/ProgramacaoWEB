@@ -1,0 +1,22 @@
+<!-- comentario.html -->
+{% extends 'artigo/layout.html' %}
+
+{% block content %}
+    <ul>
+        <h1>Comentário:</h1>
+        <h2>
+            "{{ comentario.texto }}"
+        </h2>
+
+        <h3>Feito por:
+        <li><a href="{% url 'artigo:autor_url' comentario.autor.nome %}">{{ comentario.autor }}</a></li>
+        </h3>
+
+        <h3>Escrito em: {{ comentario.ano_Do_Comentario }}</h3>
+
+        <h3>Artigo:
+        <li><a href="{% url 'artigo:artigo_url' comentario.artigo.titulo %}">{{ comentario.artigo }}</a></li>
+        </h3>
+
+    </ul>
+{% endblock %}

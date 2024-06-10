@@ -1,0 +1,26 @@
+<!-- musica.html -->
+{% extends 'bandas/layout.html' %}
+
+{% block content %}
+    <ul>
+        <h1>{{ musica.tituloMusica }}</h1>
+
+        <h2>Lançado em: {{ musica.anoDeLancamento }}</h2>
+        <h3>Banda:
+        <li><a href="{% url 'bandas:banda_url' musica.banda.nome %}">{{ musica.banda }}</a></li>
+        </h3>
+
+        <h3>Álbum:
+        <li><a href="{% url 'bandas:album_url' musica.album.tituloAlbum %}">{{ musica.album }}</a></li>
+        </h3>
+
+        <h3>Link: <a href="{{ musica.link }}">{{ musica.link }}</a></h3>
+
+        <h3>
+        {% if musica.letra %}
+        Letra:
+        <pre>{{ musica.letra }}</pre>
+        {% endif %}
+        </h3>
+    </ul>
+{% endblock %}

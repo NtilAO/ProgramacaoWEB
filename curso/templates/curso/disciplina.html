@@ -1,0 +1,38 @@
+{% extends 'curso/layout.html' %}
+
+{% block content %}
+    <h1> {{ disciplina.nome }} </h1>
+    <h2>Ano: {{ disciplina.ano }}</h2>
+    <h2>Semestre: {{ disciplina.semestre }}</h2>
+    <h2>ECTS: {{ disciplina.ects }}</h2>
+    <h2>Código Curricular: {{ disciplina.curricularIUnitReadableCode }}</h2>
+    <h2>Área Científica: {{ disciplina.area_cientifica }}</h2>
+
+    <h2>Docentes:
+    <ul>
+        {% for docente in disciplina.docentes.all %}
+            <li>{{ docente.nome }}</li>
+        {% endfor %}
+    </ul>
+    </h2>
+
+    <h2>Linguagens de Programação:
+    <ul>
+        {% for linguagem in disciplina.linguagens.all %}
+            <li>
+                {{ linguagem.nome }}
+            </li>
+        {% endfor %}
+    </ul>
+    </h2>
+
+    <h2>Projetos:
+    <ul>
+        {% for projeto in projetos %}
+            <li>
+                <a href="{% url 'curso:projeto_url' projeto.nome %}">{{ projeto.nome }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+    </h2>
+{% endblock %}

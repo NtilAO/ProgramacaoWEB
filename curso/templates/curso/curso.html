@@ -1,0 +1,24 @@
+<!-- curso.html -->
+{% extends 'curso/layout.html' %}
+
+{% block content %}
+<ul>
+        <h1> {{ curso.nome }} </h1>
+
+        <h2>Apresentação: {{ curso.apresentacao }} </h2>
+
+        <h2>Objetivos: {{ curso.objetivos }} </h2>
+
+        <h2>Competências: {{ curso.competencias }} </h2>
+
+        <h2>Lista de disciplinas:
+            <ul>
+                {% for disciplina in disciplinas %}
+                    <li>
+                        <a href="{% url 'curso:disciplina_url' disciplina.nome %}">{{ disciplina.nome }}</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </h2>
+    </ul>
+{% endblock %}

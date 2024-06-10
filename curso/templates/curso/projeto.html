@@ -1,0 +1,19 @@
+{% extends 'curso/layout.html' %}
+
+{% block content %}
+    <h1> {{ projeto.nome }} </h1>
+    <img src="{{ projeto.imagem.url }}" alt="Imagem do Projeto">
+    <h3>Descrição: {{ projeto.descricao }}</h3>
+    <h3>Link para o Vídeo Demonstrativo: <a href="{{ projeto.video_link }}">{{ projeto.video_link }}</a></h3>
+    <h3>Conceitos Aplicados: {{ projeto.conceitos_aplicados }}</h3>
+    <h3>Tecnologias Utilizadas: {{ projeto.tecnologias_utilizadas }}</h3>
+    <h3>Disciplina: {{ projeto.disciplina.nome }}</h3>
+    <h3>Linguagens de Programação Utilizadas:</h3>
+    <ul>
+        {% for linguagem in projeto.linguagens.all %}
+            <li>{{ linguagem.nome }}</li>
+        {% endfor %}
+    </ul>
+
+    <h3>Link para o Repositório GitHub: {{ projeto.github_link }}</h3>
+{% endblock %}

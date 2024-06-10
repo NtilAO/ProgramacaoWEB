@@ -1,0 +1,14 @@
+<!-- artigos.html -->
+{% extends 'artigo/layout.html' %}
+
+{% block content %}
+<h1>Lista de Artigos:
+    <ul>
+        {% for artigo in artigos %}
+            <li>
+                <a href="{% url 'artigo:artigo_url' artigo.titulo %}">{{ artigo.titulo }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+</h1>
+{% endblock %}

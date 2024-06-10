@@ -1,0 +1,24 @@
+<!-- banda.html -->
+{% extends 'bandas/layout.html' %}
+
+{% block content %}
+    <ul>
+    <h1> {{ banda.nome }} </h1>
+    <img src='{{ banda.foto.url}}' width="150px">
+
+
+    <h2>Lista de álbuns da banda:
+    {% for album in banda.album_set.all %}
+       <li>
+          <a href="{% url 'bandas:album_url' album.tituloAlbum %}">{{ album }}</a>
+       </li>
+
+       {% for musica in album.musica_set.all %}
+          {% if musica.biografia %}
+            <pre>{{ musica.biografia }}</pre>
+          {% endif %}
+       {% endfor %}
+    {% endfor %}
+    </h2>
+    </ul>
+{% endblock %}
